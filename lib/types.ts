@@ -1,3 +1,5 @@
+export type { Role, Stage } from "@/lib/constants";
+
 import type {
   EmploymentType,
   InterviewStatus,

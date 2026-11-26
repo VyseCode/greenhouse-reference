@@ -13,5 +13,5 @@ export default async function CandidatePage(props: PageProps<"/applications/[id]
   await connectDB();
   const application = await getApplicationDetail(id, true);
   if (!application) notFound();
-  return <CandidateDetail application={application} />;
+  return <CandidateDetail application={application} canManage />;
 }

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { StageBadge } from "@/components/Badges";
+import { CandidateWorkflow } from "@/components/CandidateWorkflow";
 import {
   ArrowRight,
   Calendar,
@@ -17,7 +18,13 @@ import { STAGES } from "@/lib/constants";
 import { formatDate, formatDateTime, titleCase } from "@/lib/format";
 import type { ApplicationDetail } from "@/lib/types";
 
-export function CandidateDetail({ application }: { application: ApplicationDetail }) {
+export function CandidateDetail({
+  application,
+  canManage,
+}: {
+  application: ApplicationDetail;
+  canManage: boolean;
+}) {
   const [showHistory, setShowHistory] = useState(false);
   const stageIndex = STAGES.indexOf(application.stage);
 
@@ -167,6 +174,8 @@ export function CandidateDetail({ application }: { application: ApplicationDetai
         </div>
 
         <aside className="space-y-6">
+          <CandidateWorkflow application={application} canManage={canManage} />
+
           <Section title="Stage history" icon={<Clock width={17} height={17} />}>
             <ol className="space-y-3">
               {application.stageHistory.map((event, index) => (
