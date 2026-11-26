@@ -16,13 +16,15 @@ import {
 } from "@/components/Icons";
 import { STAGES } from "@/lib/constants";
 import { formatDate, formatDateTime, titleCase } from "@/lib/format";
-import type { ApplicationDetail } from "@/lib/types";
+import type { ApplicationDetail, UserDTO } from "@/lib/types";
 
 export function CandidateDetail({
   application,
+  interviewers,
   canManage,
 }: {
   application: ApplicationDetail;
+  interviewers: UserDTO[];
   canManage: boolean;
 }) {
   const [showHistory, setShowHistory] = useState(false);
@@ -174,7 +176,7 @@ export function CandidateDetail({
         </div>
 
         <aside className="space-y-6">
-          <CandidateWorkflow application={application} canManage={canManage} />
+          <CandidateWorkflow application={application} interviewers={interviewers} canManage={canManage} />
 
           <Section title="Stage history" icon={<Clock width={17} height={17} />}>
             <ol className="space-y-3">

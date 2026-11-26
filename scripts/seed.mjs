@@ -498,7 +498,7 @@ async function main() {
   await Scorecard.insertMany(scorecards, { ordered: false });
 
   const offerApps = insertedApplications.filter((a) => ["offer", "hired"].includes(a.stage));
-  const offers = offerApps.map((app, i) => ({
+  const offers = offerApps.map((app) => ({
     application: app._id,
     job: app.job,
     salary: int(7, 16) * 10000 + 5000,
